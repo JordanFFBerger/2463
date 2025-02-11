@@ -69,14 +69,12 @@ class Character {
             case LEFT_ARROW:
                 character.currentAnimation = "left";
                 character2.currentAnimation = "left";
-                character3.currentAnimation = "left";
                 this.animations[this.currentAnimation].flipped = true;
                 this.lastFrame = true;
                 break;
             case RIGHT_ARROW:
                 character.currentAnimation = "right";
                 character2.currentAnimation = "right";
-                character3.currentAnimation = "right";
                 this.animations[this.currentAnimation].flipped = false;
                 this.lastFrame = false;
                 break;
@@ -85,7 +83,7 @@ class Character {
     keyReleased(){
         character2.currentAnimation = "stand";
         character.currentAnimation = "stand";
-        character3.currentAnimation = "stand";
+        character3.currentAnimation = "stand"
         if (this.lastFrame === true)
             {
                 console.log("does flip");
@@ -100,13 +98,11 @@ class Character {
 function keyPressed() {
     character.keyPressed();
     character2.keyPressed();
-    character3.keyPressed();
 }
 
 function keyReleased(){
     character.keyReleased();
     character2.keyReleased();
-    character3.keyReleased();
 }
   class SpriteAnimation{
     constructor(spritesheet, startU, startV, duration)

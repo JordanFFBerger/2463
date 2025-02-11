@@ -20,21 +20,19 @@ function setup() {
     character2.addAnimation("stand", new SpriteAnimation(green,0,0,1));
     character2.currentAnimation = "stand";
     character3 = new Character(300,300);
-    character3.addAnimation("right",new SpriteAnimation(meatboy,1,0,8));
-    character3.addAnimation("left",new SpriteAnimation(meatboy,1,0,8));
-    character3.addAnimation("stand", new SpriteAnimation(meatboy,0,0,1));
-    character3.currentAnimation = "stand";
+    character2.addAnimation("right",new SpriteAnimation(green,1,0,8));
+    character2.addAnimation("left",new SpriteAnimation(green,1,0,8));
+    character2.addAnimation("stand", new SpriteAnimation(green,0,0,1));
+    character2.currentAnimation = "stand";
   }
   function draw(){
     background(220);
     character.draw();
     character2.draw();
-    character3.draw();
   }
 function preload(){
   green = loadImage("Green.png");
   spelunkyguy = loadImage("SpelunkyGuy.png");
-  meatboy = loadImage("56410.png");
 }
 class Character {
     constructor(x,y){
@@ -69,14 +67,12 @@ class Character {
             case LEFT_ARROW:
                 character.currentAnimation = "left";
                 character2.currentAnimation = "left";
-                character3.currentAnimation = "left";
                 this.animations[this.currentAnimation].flipped = true;
                 this.lastFrame = true;
                 break;
             case RIGHT_ARROW:
                 character.currentAnimation = "right";
                 character2.currentAnimation = "right";
-                character3.currentAnimation = "right";
                 this.animations[this.currentAnimation].flipped = false;
                 this.lastFrame = false;
                 break;
@@ -85,7 +81,6 @@ class Character {
     keyReleased(){
         character2.currentAnimation = "stand";
         character.currentAnimation = "stand";
-        character3.currentAnimation = "stand";
         if (this.lastFrame === true)
             {
                 console.log("does flip");
@@ -100,13 +95,11 @@ class Character {
 function keyPressed() {
     character.keyPressed();
     character2.keyPressed();
-    character3.keyPressed();
 }
 
 function keyReleased(){
     character.keyReleased();
     character2.keyReleased();
-    character3.keyReleased();
 }
   class SpriteAnimation{
     constructor(spritesheet, startU, startV, duration)

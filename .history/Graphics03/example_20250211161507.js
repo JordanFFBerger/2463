@@ -76,7 +76,6 @@ class Character {
             case RIGHT_ARROW:
                 character.currentAnimation = "right";
                 character2.currentAnimation = "right";
-                character3.currentAnimation = "right";
                 this.animations[this.currentAnimation].flipped = false;
                 this.lastFrame = false;
                 break;
