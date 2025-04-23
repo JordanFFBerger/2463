@@ -22,8 +22,6 @@ let sequence;
 let port;
 let zeroButton;
 let connectButton;
-let cursorX, cursorY;
-let speed = 0.01;
 function getRandomInt(){
     min = 0+textPadding;
     max = 400-textPadding;
@@ -61,10 +59,8 @@ function setup() {
     connectButton.mousePressed(connect);
     zeroButton = createButton("Zero Joystick");
     zeroButton.mousePressed(zero);
-    cursorX = width/2;
-    cursorY = height/2;
     bugArray.push(enemy);
-     
+        
     
 
   }
@@ -79,25 +75,8 @@ function setup() {
            let y = Number(values[1]);
            let sw = Number(values[2]);
            //console.log(x + "," + y + "," + sw);
-
-           cursorX += x * speed;
-           cursorY += y * speed;
-
            fill(0);
-           circle(cursorX,cursorY,25);
-
-           if(cursorX + cursorY <= (enemy.x+enemy.y+textPadding) && cursorX+cursorY >= (enemy.x+enemy.y-2*textPadding) && sw == 1){
-                console.log("Squished");
-                enemy.currentAnimation = "death";
-                squishSound.start();
-                score +=1;
-                setTempo();
-            
-                port.write('scored\n');
-            
-        
-                setTimeout(() => pnP(), 300);
-           } 
+           circle(x,y,25);
         }
     }
 
@@ -291,12 +270,10 @@ function setTempo(){
 
 function connect() {
     port.open("Arduino", 9600);
-    time = 30;
 }
 
 function zero(){
     if (port.opened()){
         port.write('zero\n');
     }
-    time = 30;
 }

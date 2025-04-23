@@ -86,17 +86,8 @@ function setup() {
            fill(0);
            circle(cursorX,cursorY,25);
 
-           if(cursorX + cursorY <= (enemy.x+enemy.y+textPadding) && cursorX+cursorY >= (enemy.x+enemy.y-2*textPadding) && sw == 1){
-                console.log("Squished");
-                enemy.currentAnimation = "death";
-                squishSound.start();
-                score +=1;
-                setTempo();
+           if(cursorX + cursorY <= (enemy.x+enemy.y+textPadding) && cursorX+cursorY >= (enemy.x+enemy.y-2*textPadding)){
             
-                port.write('scored\n');
-            
-        
-                setTimeout(() => pnP(), 300);
            } 
         }
     }
@@ -291,12 +282,10 @@ function setTempo(){
 
 function connect() {
     port.open("Arduino", 9600);
-    time = 30;
 }
 
 function zero(){
     if (port.opened()){
         port.write('zero\n');
     }
-    time = 30;
 }

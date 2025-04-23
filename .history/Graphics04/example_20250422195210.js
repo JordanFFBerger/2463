@@ -291,12 +291,10 @@ function setTempo(){
 
 function connect() {
     port.open("Arduino", 9600);
-    time = 30;
 }
 
 function zero(){
     if (port.opened()){
         port.write('zero\n');
     }
-    time = 30;
 }
