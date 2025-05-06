@@ -379,7 +379,7 @@ class Hero {
 function keyPressed(){
     switch (gameState){
         case GameStates.START:
-            hero.keyPressed();
+            
         break;
         case GameStates.PLAY:
 
